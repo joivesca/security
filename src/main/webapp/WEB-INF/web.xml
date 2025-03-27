@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="https://jakarta.ee/xml/ns/jakartaee"
+	xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_6_0.xsd"
+	version="6.0">
+	<display-name>security</display-name>
+	<welcome-file-list>
+		<welcome-file>index.html</welcome-file>
+		<welcome-file>index.htm</welcome-file>
+		<welcome-file>index.jsp</welcome-file>
+		<welcome-file>default.html</welcome-file>
+		<welcome-file>default.htm</welcome-file>
+		<welcome-file>default.jsp</welcome-file>
+	</welcome-file-list>
+<listener>
+        <listener-class>org.glassfish.exousia.spi.tomcat.TomcatIntegrationInitializer</listener-class>
+    </listener>
+	
+<security-role>
+		<role-name>foo</role-name>
+	</security-role>
+	<security-constraint>
+		<web-resource-collection>
+			<web-resource-name>Foo Resource</web-resource-name>
+			<url-pattern>/foo/*</url-pattern>
+			<http-method>GET</http-method>
+		</web-resource-collection>
+		<auth-constraint>
+			<role-name>g1</role-name>
+		</auth-constraint>
+	</security-constraint>
+
+	<security-constraint>
+		<web-resource-collection>
+			<web-resource-name>Foox Resource</web-resource-name>
+			<url-pattern>/foox/*</url-pattern>
+			<http-method>GET</http-method>
+		</web-resource-collection>
+		<auth-constraint>
+			<role-name>g2</role-name>
+		</auth-constraint>
+	</security-constraint>
+
+	<security-role>
+		<role-name>g1</role-name>
+	</security-role>
+	
+	<security-role>
+		<role-name>g2</role-name>
+	</security-role>
+	
+	<security-constraint>
+		<web-resource-collection>
+			<web-resource-name>User pages</web-resource-name>
+			<url-pattern>/protectedServlet/*</url-pattern>
+		</web-resource-collection>
+		<auth-constraint>
+			<role-name>foo</role-name>
+		</auth-constraint>
+	</security-constraint>
+	
+	<login-config>
+    <auth-method>BASIC</auth-method>
+    <realm-name>MyRealm</realm-name>
+</login-config>
+	
+
+</web-app>

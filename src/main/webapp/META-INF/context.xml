@@ -1,0 +1,17 @@
+<?xml version='1.0' encoding='utf-8'?>
+<Context>
+	<Resource name="BeanManager" auth="Container"
+		type="jakarta.enterprise.inject.spi.BeanManager"
+		factory="org.jboss.weld.resources.ManagerObjectFactory" />
+		
+<!-- 		<Realm className="org.glassfish.exousia.spi.tomcat.ExousiaMemoryRealm" -->
+<!--            appName="security" -->
+<!--            roleNameColumn="role_name" -->
+<!--            userNameColumn="username" -->
+<!--            userCredColumn="password" -->
+<!--            realmName="MyRealm"/> -->
+           
+<!--                <Listener className="org.glassfish.exousia.spi.tomcat.TomcatIntegrationInitializer" /> -->
+
+<Parameter name="exousia.policyFile" value="WEB-INF/policy.xml" />
+</Context>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<policy>
+    <role name="admin">
+        <permission action="read, write, execute" resource="*"/>
+    </role>
+    
+    <role name="foo">
+        <permission action="read" resource="*"/>
+    </role>
+
+    <rule name="adminAccess">
+        <role name="admin"/>
+        <resource name="/*" permission="read, write, execute"/>
+    </rule>
+
+    <rule name="userAccess">
+        <role name="user"/>
+        <resource name="/user/*" permission="read"/>
+    </rule>
+</policy>
